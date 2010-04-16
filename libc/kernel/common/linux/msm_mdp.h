@@ -73,6 +73,7 @@ enum {
 #define MDP_ROT_270 (MDP_ROT_90|MDP_FLIP_UD|MDP_FLIP_LR)
 #define MDP_DITHER 0x8
 #define MDP_BLUR 0x10
+#define MDP_BLEND_FG_PREMULT 0x20000
 
 #define MDP_DEINTERLACE 0x80000000
 #define MDP_SHARPENING 0x40000000
@@ -115,7 +116,7 @@ struct mdp_blit_req {
  uint32_t alpha;
  uint32_t transp_mask;
  uint32_t flags;
- int sharpening_strength;
+// int sharpening_strength;
 };
 
 struct mdp_blit_req_list {
