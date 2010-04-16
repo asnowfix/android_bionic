@@ -9,12 +9,13 @@ LOCAL_SRC_FILES:= \
 	debugger.c \
 	ba.c
 
-ifeq ($(TARGET_ARCH),sh)
-# SH-4A series virtual address range from 0x00000000 to 0x7FFFFFFF.
-LINKER_TEXT_BASE := 0x70000100
-else
+ifneq ($(TARGET_USES_2G_VM_SPLIT),true)
 LINKER_TEXT_BASE := 0xB0000100
+else
+LINKER_TEXT_BASE := 0x70000100
+LOCAL_CFLAGS += -DVM_SPLIT_2G
 endif
+
 
 # The maximum size set aside for the linker, from
 # LINKER_TEXT_BASE rounded down to a megabyte.

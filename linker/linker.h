@@ -155,15 +155,15 @@ struct soinfo
 extern soinfo libdl_info;
 
 /* these must all be powers of two */
-#ifdef ARCH_SH
-#define LIBBASE 0x60000000
-#define LIBLAST 0x70000000
-#define LIBINC  0x00100000
+#ifdef VM_SPLIT_2G
+#define LIBBASE 0x40000000
+#define LIBLAST 0x50000000
 #else
 #define LIBBASE 0x80000000
 #define LIBLAST 0x90000000
-#define LIBINC  0x00100000
 #endif
+#define LIBINC  0x00100000
+
 
 #ifdef ANDROID_ARM_LINKER
 
